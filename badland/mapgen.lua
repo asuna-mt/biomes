@@ -18,7 +18,7 @@ minetest.register_decoration({
 	deco_type = "simple",
 	place_on = {"badland:badland_grass"},
 	sidelen = 16,
-	fill_ratio = 0.01,
+	fill_ratio = 0.0025,
     param2 = 0,
     param2_max = 3,
 	biomes = {"badland"},

@@ -94,10 +94,13 @@ minetest.register_decoration({
 	deco_type = "simple",
 	place_on = {"nightshade:nightshade_dirt_with_grass"},
 	sidelen = 16,
-	fill_ratio = 0.15,
+	fill_ratio = 0.0125,
 	biomes = {"nightshade"},
 	decoration = {
-        "flowers:mushroom_brown", "flowers:mushroom_red", "default:junglegrass",
+        "everness:ivis_moss",
+        "everness:ngrass_2",
+        "flowers:mushroom_brown",
+        "flowers:mushroom_red",
 	}
 })
 
@@ -105,10 +108,11 @@ minetest.register_decoration({
 	deco_type = "simple",
 	place_on = {"nightshade:nightshade_tree"},
 	sidelen = 16,
-	fill_ratio = 0.15,
+	fill_ratio = 0.125,
 	biomes = {"nightshade"},
 	decoration = {
-        "flowers:mushroom_brown", "flowers:mushroom_red", "default:junglegrass",
+        "flowers:mushroom_brown",
+        "flowers:mushroom_red",
 	}
 })
 
@@ -116,7 +120,7 @@ minetest.register_decoration({
 	deco_type = "simple",
 	place_on = {"nightshade:nightshade_dirt_with_grass"},
 	sidelen = 16,
-	fill_ratio = 0.15,
+	fill_ratio = 0.175,
 	biomes = {"nightshade"},
 	decoration = {
         "nightshade:nightshade_grass",

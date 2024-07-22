@@ -89,7 +89,7 @@ minetest.register_node("badland:badland_wood", {
 	tiles = {"badland_wood.png"},
 	paramtype2 = "facedir",
 	is_ground_content = false,
-	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
+	groups = {wood = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
 	sounds = default.node_sound_wood_defaults(),
 
 	on_place = minetest.rotate_node
@@ -226,55 +226,10 @@ for i = 2, 5 do
 	})
 end
 
-minetest.register_node("badland:scarecrow", {
-	description = "Scarecrow",
-	drawtype = "mesh",
-	mesh = "scarecrow.obj",
-	paramtype2 = "facedir",
-	tiles = {
-		"badland_scarecrow.png",
-	},
-	visual_scale = 0.5,
-	wield_image = "badland_scarecrow_item.png",
-	wield_scale = {x=1.0, y=1.0, z=1.0},
-	paramtype = "light",
-	selection_box = {
-		type = "fixed",
-		fixed = {-0.3, -0.5, -0.3, 0.3, 1, 0.3}
-	},
-	collision_box = {
-		type = "fixed",
-		fixed = {-0.3, -0.5, -0.3, 0.3, 1, 0.3}
-	},
-	inventory_image = "badland_scarecrow_item.png",
-	groups = {choppy = 1, oddly_breakable_by_hand = 1},
-	sounds = default.node_sound_wood_defaults()
-})
-
--- Pumpkin
-minetest.register_node("badland:pumpkin_block", {
-	description = "Pumpkin Block",
-	tiles = {"badland_pumpkin_fruit_top.png", "badland_pumpkin_fruit_top.png", "badland_pumpkin_fruit_side.png", "badland_pumpkin_fruit_side.png", "badland_pumpkin_fruit_side.png", "badland_pumpkin_fruit_side_off.png"},
-	paramtype2 = "facedir",
-	sounds = default.node_sound_wood_defaults(),
-	is_ground_content = false,
-	groups = {snappy=3, flammable=4, fall_damage_add_percent=-30},
-	on_construct = pumpkin_on_construct
-})
-
--- PUMPKIN LANTERN -- from recipe
-minetest.register_node("badland:pumpkin_lantern", {
-	description = "Jack o' Lantern",
-	tiles = {"badland_pumpkin_fruit_top.png", "badland_pumpkin_fruit_top.png", "badland_pumpkin_fruit_side.png", "badland_pumpkin_fruit_side.png", "badland_pumpkin_fruit_side.png", "badland_pumpkin_fruit_side_on.png"},
-	paramtype = "light",
-	paramtype2 = "facedir",
-	sounds = default.node_sound_wood_defaults(),
-	is_ground_content = false,
-	light_source = 12,
-	drop = "badland:pumpkin_lantern",
-	groups = {snappy=3, flammable=4, fall_damage_add_percent=-30},
-	on_construct = pumpkin_on_construct
-})
+-- Aliases for X Farming nodes
+minetest.register_alias("badland:scarecrow","x_farming:scarecrow")
+minetest.register_alias("badland:pumpkin_lantern","x_farming:pumpkin_lantern")
+minetest.register_alias("badland:pumpkin_block","x_farming:pumpkin_block")
 
 --[[
 	Trees

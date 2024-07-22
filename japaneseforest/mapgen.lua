@@ -76,7 +76,7 @@ minetest.register_decoration({
 
 
 
-minetest.register_decoration({
+--[[minetest.register_decoration({
     name = "japaneseforest:bamboo",
     deco_type = "schematic",
     place_on = {"japaneseforest:japanese_dirt_with_grass"},
@@ -89,7 +89,7 @@ minetest.register_decoration({
     schematic = minetest.get_modpath("bambooforest").."/schematics/bamboo_tree_5.mts",
 	flags = "place_center_x, place_center_z",
 	rotation = "random",
-})
+})]]
 
 minetest.register_decoration({
 	deco_type = "simple",

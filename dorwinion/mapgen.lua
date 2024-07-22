@@ -35,7 +35,21 @@ minetest.register_decoration({
 	rotation = "random",
 })
 
+local did_dorwinion = minetest.get_decoration_id('dorwinion:tree_2')
+minetest.set_gen_notify('decoration',{ did_dorwinion })
+did_dorwinion = 'decoration#' .. did_dorwinion
 
+minetest.register_on_generated(function(minp, maxp)
+	if maxp.y > 4 then
+		--
+		-- Large Dorwinion Tree - fix light
+		--
+		local gennotify = minetest.get_mapgen_object('gennotify')
+		for _, pos in ipairs(gennotify[did_dorwinion] or {}) do
+			minetest.after(0.2,function() minetest.fix_light(pos:offset(-16, -1, -16), pos:offset(16, 39, 16)) end)
+		end
+	end
+end)
 
 minetest.register_decoration({
     name = "dorwinion:ruins",
