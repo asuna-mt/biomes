@@ -2,7 +2,6 @@ local path = minetest.get_modpath("japaneseforest")
 
 
 --------------------Biome
-	dofile(path .. "/biomes.lua")
 	dofile(path .. "/farm.lua")
 	dofile(path .. "/mapgen.lua")
 	--dofile(path .. "/fireflies.lua")
