@@ -1,7 +1,3 @@
-	-- Dorwinion
-
-minetest.register_biome(asuna.biomes.dorwinion.generate_definition())
-
 local mpath = minetest.get_modpath("dorwinion")
 local dpath = minetest.get_modpath("default")
 
