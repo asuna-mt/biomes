@@ -1,30 +1,47 @@
-	-- Badland
-
-	minetest.register_biome(asuna.biomes.badland.generate_definition())
-
-
+-----------------------Trees
 minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {"badland:badland_grass"},
-	sidelen = 16,
-	fill_ratio = 0.35,
-	biomes = {"badland"},
-	decoration = {
-        "badland:badland_grass_1", "badland:badland_grass_2", "badland:badland_grass_3", "badland:badland_grass_4", "badland:badland_grass_5",
-	}
+    name = "badland:badland_tree_1",
+    deco_type = "schematic",
+    place_on = {"badland:badland_grass"},
+    place_offset_y = 0,
+    sidelen = 16,
+    fill_ratio = 0.002265,
+    biomes = {"badland"},
+    y_max = 31000,
+    y_min = -20,
+    schematic = minetest.get_modpath("badland").."/schematics/badland_tree_1.mts",
+	flags = "place_center_x, place_center_z",
+	rotation = "random",
 })
 
 minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {"badland:badland_grass"},
-	sidelen = 16,
-	fill_ratio = 0.0025,
-    param2 = 0,
-    param2_max = 3,
-	biomes = {"badland"},
-	decoration = {
-        "badland:pumpkin_block",
-	}
+    name = "badland:badland_tree_2",
+    deco_type = "schematic",
+    place_on = {"badland:badland_grass"},
+    place_offset_y = 0,
+    sidelen = 16,
+    fill_ratio = 0.002265,
+    biomes = {"badland"},
+    y_max = 31000,
+    y_min = -20,
+    schematic = minetest.get_modpath("badland").."/schematics/badland_tree_2.mts",
+	flags = "place_center_x, place_center_z",
+	rotation = "random",
+})
+
+minetest.register_decoration({
+    name = "badland:badland_tree_3",
+    deco_type = "schematic",
+    place_on = {"badland:badland_grass"},
+    place_offset_y = 0,
+    sidelen = 16,
+    fill_ratio = 0.002265,
+    biomes = {"badland"},
+    y_max = 31000,
+    y_min = -20,
+    schematic = minetest.get_modpath("badland").."/schematics/badland_tree_3.mts",
+	flags = "place_center_x, place_center_z",
+	rotation = "random",
 })
 ---------------------------------------Bush
 minetest.register_decoration({
@@ -71,51 +88,6 @@ minetest.register_decoration({
 	flags = "place_center_x, place_center_z",
 	rotation = "random",
 })
------------------------Trees
-minetest.register_decoration({
-    name = "badland:badland_tree_1",
-    deco_type = "schematic",
-    place_on = {"badland:badland_grass"},
-    place_offset_y = 0,
-    sidelen = 16,
-    fill_ratio = 0.002265,
-    biomes = {"badland"},
-    y_max = 31000,
-    y_min = -20,
-    schematic = minetest.get_modpath("badland").."/schematics/badland_tree_1.mts",
-	flags = "place_center_x, place_center_z",
-	rotation = "random",
-})
-
-minetest.register_decoration({
-    name = "badland:badland_tree_2",
-    deco_type = "schematic",
-    place_on = {"badland:badland_grass"},
-    place_offset_y = 0,
-    sidelen = 16,
-    fill_ratio = 0.002265,
-    biomes = {"badland"},
-    y_max = 31000,
-    y_min = -20,
-    schematic = minetest.get_modpath("badland").."/schematics/badland_tree_2.mts",
-	flags = "place_center_x, place_center_z",
-	rotation = "random",
-})
-
-minetest.register_decoration({
-    name = "badland:badland_tree_3",
-    deco_type = "schematic",
-    place_on = {"badland:badland_grass"},
-    place_offset_y = 0,
-    sidelen = 16,
-    fill_ratio = 0.002265,
-    biomes = {"badland"},
-    y_max = 31000,
-    y_min = -20,
-    schematic = minetest.get_modpath("badland").."/schematics/badland_tree_3.mts",
-	flags = "place_center_x, place_center_z",
-	rotation = "random",
-})
 ---------------------Racine
 minetest.register_decoration({
     name = "badland:racine_1",
@@ -146,14 +118,27 @@ minetest.register_decoration({
 	flags = "place_center_x, place_center_z",
 	rotation = "random",
 })
-
---[[minetest.register_decoration({
+---------------------------Grass
+minetest.register_decoration({
 	deco_type = "simple",
 	place_on = {"badland:badland_grass"},
 	sidelen = 16,
-	fill_ratio = 0.02,
+	fill_ratio = 0.35,
 	biomes = {"badland"},
 	decoration = {
- "japaneseforest:red_firefly", "japaneseforest:orange_firefly", "default:firefly",
+        "badland:badland_grass_1", "badland:badland_grass_2", "badland:badland_grass_3", "badland:badland_grass_4", "badland:badland_grass_5",
 	}
-})]]
+})
+---------------------------Pumpkins
+minetest.register_decoration({
+	deco_type = "simple",
+	place_on = {"badland:badland_grass"},
+	sidelen = 16,
+	fill_ratio = 0.0025,
+    param2 = 0,
+    param2_max = 3,
+	biomes = {"badland"},
+	decoration = {
+        "badland:pumpkin_block",
+	}
+})
