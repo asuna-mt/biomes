@@ -1,5 +1,3 @@
-minetest.register_biome(asuna.biomes.nightshade.generate_definition())
-
 minetest.register_decoration({
     name = "nightshade:nightshade_tree_1",
     deco_type = "schematic",
