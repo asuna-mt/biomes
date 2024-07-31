@@ -85,7 +85,7 @@ minetest.register_node("badland:badland_tree", {
 
 
 minetest.register_node("badland:badland_wood", {
-	description = "Badland Tree",
+	description = "Badland Wood",
 	tiles = {"badland_wood.png"},
 	paramtype2 = "facedir",
 	is_ground_content = false,
