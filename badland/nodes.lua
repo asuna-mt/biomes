@@ -63,8 +63,9 @@ minetest.register_node("badland:badland_leaves_3", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {"badland:badland_leaves_3"}}
-		}
+			{items = {"badland:badland_sapling_3"}, rarity = 20},
+			{items = {"badland:badland_leaves_3"}},
+		},
 	},
 	sounds = default.node_sound_leaves_defaults(),
 
@@ -246,6 +247,12 @@ local trees = {
 		name = "Haunted",
 		grow_function = function(pos)
 			minetest.place_schematic({x = pos.x-3, y = pos.y, z = pos.z-2}, modpath.."/schematics/badland_tree_3.mts", "0", nil, false)
+		end,
+	},
+	{
+		name = "Dusky",
+		grow_function = function(pos)
+			minetest.place_schematic({x = pos.x-3, y = pos.y, z = pos.z-2}, modpath.."/schematics/badland_tree_4.mts", "0", nil, false)
 		end,
 	},
 }

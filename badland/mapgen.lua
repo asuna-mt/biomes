@@ -5,7 +5,13 @@ minetest.register_decoration({
     place_on = {"badland:badland_grass"},
     place_offset_y = 0,
     sidelen = 16,
-    fill_ratio = 0.002265,
+    noise_params = {
+        offset = 0.00125,
+        scale = 0.0075,
+        spread = {x = 80, y = 20, z = 80},
+        seed = 777,
+        octaves = 1,
+    },
     biomes = {"badland"},
     y_max = 31000,
     y_min = -20,
@@ -20,7 +26,7 @@ minetest.register_decoration({
     place_on = {"badland:badland_grass"},
     place_offset_y = 0,
     sidelen = 16,
-    fill_ratio = 0.002265,
+    fill_ratio = 0.00025,
     biomes = {"badland"},
     y_max = 31000,
     y_min = -20,
@@ -35,7 +41,13 @@ minetest.register_decoration({
     place_on = {"badland:badland_grass"},
     place_offset_y = 0,
     sidelen = 16,
-    fill_ratio = 0.002265,
+    noise_params = {
+        offset = 0.001,
+        scale = 0.0025,
+        spread = {x = 40, y = 40, z = 40},
+        seed = 999,
+        octaves = 1,
+    },
     biomes = {"badland"},
     y_max = 31000,
     y_min = -20,
@@ -43,6 +55,30 @@ minetest.register_decoration({
 	flags = "place_center_x, place_center_z",
 	rotation = "random",
 })
+
+minetest.register_decoration({
+    name = "badland:badland_tree_4",
+    deco_type = "schematic",
+    place_on = {"badland:badland_grass"},
+    place_offset_y = 0,
+    sidelen = 16,
+    noise_params = {
+        offset = -0.005,
+        scale = 0.01,
+        spread = {x = 80, y = 20, z = 80},
+        seed = 101010,
+        octaves = 2,
+        persistence = 0.5,
+        lacunarity = 0.9,
+    },
+    biomes = {"badland"},
+    y_max = 31000,
+    y_min = -20,
+    schematic = minetest.get_modpath("badland").."/schematics/badland_tree_4.mts",
+	flags = "place_center_x, place_center_z",
+	rotation = "random",
+})
+
 ---------------------------------------Bush
 minetest.register_decoration({
     name = "badland:badland_brush",
