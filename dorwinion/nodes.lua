@@ -140,7 +140,7 @@ minetest.register_node("dorwinion:dorwinion_grass", {
 		{name = "dorwinion.png^dorwinion_grass_side.png",
 			tileable_vertical = false}},
 	groups = {crumbly = 3, soil = 1, spreading_dirt_type = 1},
-	drop = "default:dirt",
+	drop = "dorwinion:dorwinion",
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.25},
 	}),
