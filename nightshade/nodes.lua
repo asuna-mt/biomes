@@ -33,8 +33,9 @@ minetest.register_node("nightshade:nightshade_leaves_1", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {"nightshade:nightshade_sapling"}, rarity = 20},
-			{items = {"nightshade:nightshade_leaves_1"}}
+			{items = {"nightshade:nightshade_sapling_1"}, rarity = 40},
+			{items = {"nightshade:nightshade_sapling_2"}, rarity = 40},
+			{items = {"nightshade:nightshade_leaves_1"}} -- ~95% chance for leaves
 		}
 	},
 	sounds = default.node_sound_leaves_defaults(),
@@ -54,7 +55,6 @@ minetest.register_node("nightshade:nightshade_glowin_leaves_1", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {"nightshade:nightshade_sapling"}, rarity = 20},
 			{items = {"nightshade:nightshade_glowin_leaves_1"}}
 		}
 	},
