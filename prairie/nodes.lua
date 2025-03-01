@@ -20,12 +20,14 @@ local trees = {
 	{
 		name = "Sunny",
 		grow_function = function(pos)
+			minetest.remove_node(pos)
 			minetest.place_schematic({x = pos.x-4, y = pos.y, z = pos.z-4}, modpath.."/schematics/prairie_tree_1.mts", "random", nil, false)
 		end,
 	},
 	{
 		name = "Cheerful",
 		grow_function = function(pos)
+			minetest.remove_node(pos)
 			minetest.place_schematic({x = pos.x-2, y = pos.y, z = pos.z-2}, modpath.."/schematics/prairie_tree_2.mts", "random", nil, false)
 		end,
 	},
@@ -73,7 +75,6 @@ for index,def in ipairs(trees) do
 				minetest.get_node_timer(pos):start(math.random(240, 600))
 				return
 			else
-				minetest.remove_node(pos)
 				def.grow_function(pos)
 			end
 		end,

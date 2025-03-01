@@ -7,6 +7,7 @@ local trees = {
 		kana = "いち",
 		grow_function = function(pos)
 			local path = mpath .. "/schematics/japanese_tree_1_3.mts"
+			minetest.remove_node(pos)
 			minetest.place_schematic({x = pos.x - 2, y = pos.y, z = pos.z - 2},
 				path, "random", nil, false)
 		end,
@@ -15,6 +16,7 @@ local trees = {
 		kana = "に",
 		grow_function = function(pos)
 			local path = mpath .. "/schematics/japanese_tree_2_1.mts"
+			minetest.remove_node(pos)
 			minetest.place_schematic({x = pos.x - 5, y = pos.y, z = pos.z - 5},
 				path, "random", nil, false)
 		end,
@@ -23,6 +25,7 @@ local trees = {
 		kana = "さん",
 		grow_function = function(pos)
 			local path = mpath .. "/schematics/japanese_tree_3_2.mts"
+			minetest.remove_node(pos)
 			minetest.place_schematic({x = pos.x - 3, y = pos.y - 1, z = pos.z - 3},
 				path, "random", nil, false)
 		end,
@@ -70,7 +73,6 @@ for index,def in ipairs(trees) do
 				-- try a bit later again
 				minetest.get_node_timer(pos):start(math.random(240, 600))
 			else
-				minetest.remove_node(pos)
 				def.grow_function(pos)
 			end
 		end,

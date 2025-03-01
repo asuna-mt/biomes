@@ -240,18 +240,21 @@ local trees = {
 	{
 		name = "Spooky",
 		grow_function = function(pos)
+			minetest.remove_node(pos)
 			minetest.place_schematic({x = pos.x-2, y = pos.y, z = pos.z-2}, modpath.."/schematics/badland_tree_1.mts", "0", nil, false)
 		end,
 	},
 	{
 		name = "Haunted",
 		grow_function = function(pos)
+			minetest.remove_node(pos)
 			minetest.place_schematic({x = pos.x-3, y = pos.y, z = pos.z-2}, modpath.."/schematics/badland_tree_3.mts", "0", nil, false)
 		end,
 	},
 	{
 		name = "Dusky",
 		grow_function = function(pos)
+			minetest.remove_node(pos)
 			minetest.place_schematic({x = pos.x-3, y = pos.y, z = pos.z-2}, modpath.."/schematics/badland_tree_4.mts", "0", nil, false)
 		end,
 	},
@@ -279,7 +282,6 @@ for index,def in ipairs(trees) do
 				-- try a bit later again
 				minetest.get_node_timer(pos):start(math.random(240, 600))
 			else
-				minetest.remove_node(pos)
 				def.grow_function(pos)
 			end
 		end,

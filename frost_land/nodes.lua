@@ -110,12 +110,14 @@ local trees = {
 	{
 		name = "Frigid",
 		grow_function = function(pos)
+			minetest.remove_node(pos)
 			minetest.place_schematic({x = pos.x-3, y = pos.y, z = pos.z-3}, modpath.."/schematics/frost_tree_1.mts", "random", nil, false)
 		end,
 	},
 	{
 		name = "Icy",
 		grow_function = function(pos)
+			minetest.remove_node(pos)
 			minetest.place_schematic({x = pos.x-4, y = pos.y, z = pos.z-4}, modpath.."/schematics/tree_4.mts", "random", nil, false)
 		end,
 	},
@@ -162,7 +164,6 @@ for index,def in ipairs(trees) do
 				-- try a bit later again
 				minetest.get_node_timer(pos):start(math.random(240, 600))
 			else
-				minetest.remove_node(pos)
 				def.grow_function(pos)
 			end
 		end,
