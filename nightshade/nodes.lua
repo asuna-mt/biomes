@@ -7,7 +7,7 @@ local function grow_new_nightshade_tree(pos)
 		return
 	end
 	minetest.remove_node(pos)
-	minetest.place_schematic({x = pos.x-1, y = pos.y, z = pos.z-1}, modpath.."/schematics/nightshade_tree_1.mts", "0", nil, false)
+	minetest.place_schematic({x = pos.x-2, y = pos.y, z = pos.z-2}, modpath.."/schematics/nightshade_tree_1.mts", "0", nil, false)
 end
 
 minetest.register_node("nightshade:nightshade_dirt_with_grass", {
@@ -188,16 +188,62 @@ doors.register_fencegate("nightshade:gate_nightshade", {
 		sounds = default.node_sound_wood_defaults()
 	})
 
-	minetest.register_node("nightshade:nightshade_sapling", {
-		description = "Nightshade Sapling",
+local modpath = minetest.get_modpath("nightshade")
+local leaves = "nightshade:nightshade_leaves"
+local stick = "default:stick"
+
+local trees = {
+	{
+		name = "Short",
+		recipe = {
+			{"", leaves, ""},
+			{leaves, leaves, leaves},
+			{"", stick, ""},
+		},
+		grow_function = function(pos)
+			minetest.remove_node(pos)
+			minetest.place_schematic({x = pos.x-6, y = pos.y, z = pos.z-5}, modpath.."/schematics/nightshade_tree_2.mts", "0", nil, false)
+		end,
+	},
+	{
+		name = "Tall",
+		recipe = {
+			{"", leaves, ""},
+			{leaves, stick, leaves},
+			{"", stick, ""},
+		},
+		grow_function = function(pos)
+			minetest.remove_node(pos)
+			minetest.place_schematic({x = pos.x-2, y = pos.y, z = pos.z-2}, modpath.."/schematics/nightshade_tree_1.mts", "0", nil, false)
+		end,
+	},
+}
+
+local mod_bonemeal = minetest.get_modpath("bonemeal")
+
+for index,def in ipairs(trees) do
+	local sapling = "nightshade:nightshade_sapling_" .. index
+	local image = "nightshade_sapling_" .. index .. ".png"
+
+	-- Register sapling
+	minetest.register_node(sapling, {
+		description = def.name .. " Nightshade Sapling",
 		drawtype = "plantlike",
-		tiles = {"nightshade_tree_sapling.png"},
-		inventory_image = "nightshade_tree_sapling.png",
-		wield_image = "nightshade_tree_sapling.png",
+		tiles = {image},
+		inventory_image = image,
+		wield_image = image,
 		paramtype = "light",
 		sunlight_propagates = true,
 		walkable = false,
-		on_timer = grow_new_nightshade_tree,
+		on_timer = function(pos)
+			if not default.can_grow(pos) then
+				-- try a bit later again
+				minetest.get_node_timer(pos):start(math.random(240, 600))
+			else
+				minetest.remove_node(pos)
+				def.grow_function(pos)
+			end
+		end,
 		selection_box = {
 			type = "fixed",
 			fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 2 / 16, 4 / 16}
@@ -212,7 +258,7 @@ doors.register_fencegate("nightshade:gate_nightshade", {
 
 		on_place = function(itemstack, placer, pointed_thing)
 			itemstack = default.sapling_on_place(itemstack, placer, pointed_thing,
-				"nightshade:nightshade_sapling",
+				sapling,
 				-- minp, maxp to be checked, relative to sapling pos
 				{x = -1, y = 0, z = -1},
 				{x = 1, y = 1, z = 1},
@@ -223,8 +269,18 @@ doors.register_fencegate("nightshade:gate_nightshade", {
 		end,
 	})
 
-if minetest.get_modpath("bonemeal") ~= nil then
-bonemeal:add_sapling({
-	{"nightshade:nightshade_sapling", grow_new_nightshade_tree, "soil"},
-})
+	-- Register sapling crafting recipe
+	minetest.register_craft({
+		output = sapling,
+		recipe = def.recipe,
+	})
+
+	-- Add bonemeal integration if supported
+	if mod_bonemeal then
+		bonemeal:add_sapling({
+			{sapling, def.grow_function, "soil"},
+		})
+	end
 end
+
+minetest.register_alias("nightshade:nightshade_sapling","nightshade:nightshade_sapling_2")

@@ -16,3 +16,8 @@ Everyone is permitted to copy and distribute verbatim copies
 Anyone can fix the mod. My Discord "Atlante#1952" And my Mail Address "AtlanteEtDocteur@gmail.com"
 
 
+---
+
+The following textures are made by EmptyStar, licensed [CC0](https://creativecommons.org/publicdomain/zero/1.0/)
+
+- textures/nightshade_sapling_1.png
