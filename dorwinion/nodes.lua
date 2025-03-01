@@ -105,7 +105,11 @@ minetest.register_node("dorwinion:dorwinion_leaves", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {"dorwinion:dorwinion_leaves"}}
+			{items = {"dorwinion:dorwinion_sapling_1"}, rarity = 80},
+			{items = {"dorwinion:dorwinion_sapling_2"}, rarity = 80},
+			{items = {"dorwinion:dorwinion_sapling_3"}, rarity = 80},
+			{items = {"dorwinion:dorwinion_sapling_4"}, rarity = 80},
+			{items = {"dorwinion:dorwinion_leaves"}} -- ~95% chance for leaves
 		}
 	},
 	sounds = default.node_sound_leaves_defaults(),
@@ -125,7 +129,6 @@ minetest.register_node("dorwinion:dorwinion_glow_leaves", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {""}, rarity = 20},
 			{items = {"dorwinion:dorwinion_glow_leaves"}}
 		}
 	},
@@ -146,4 +149,121 @@ minetest.register_node("dorwinion:dorwinion_grass", {
 	}),
 })
 
+local modpath = minetest.get_modpath("dorwinion")
+local leaves = "dorwinion:dorwinion_leaves"
+local stick = "default:stick"
 
+local trees = {
+	{
+		name = "Short Aspen",
+		recipe = {
+			{leaves, leaves, leaves},
+			{leaves, stick, leaves},
+			{"", stick, ""},
+		},
+		grow_function = function(pos)
+			minetest.remove_node(pos)
+			minetest.place_schematic({x = pos.x-4, y = pos.y, z = pos.z-3}, modpath.."/schematics/tree_2.mts", "0", nil, false)
+		end,
+	},
+	{
+		name = "Tall Aspen",
+		recipe = {
+			{leaves, leaves, leaves},
+			{stick, leaves, stick},
+			{"", stick, ""},
+		},
+		grow_function = function(pos)
+			minetest.remove_node(pos)
+			minetest.place_schematic({x = pos.x-12, y = pos.y, z = pos.z-12}, modpath.."/schematics/tree_4.mts", "0", nil, false)
+		end,
+	},
+	{
+		name = "Short Oak",
+		recipe = {
+			{"", leaves, ""},
+			{leaves, leaves, leaves},
+			{"", stick, ""},
+		},
+		grow_function = function(pos)
+			minetest.remove_node(pos)
+			minetest.place_schematic({x = pos.x-5, y = pos.y, z = pos.z-5}, modpath.."/schematics/tree_3.mts", "0", nil, false)
+		end,
+	},
+	{
+		name = "Tall Oak",
+		recipe = {
+			{"", leaves, ""},
+			{leaves, stick, leaves},
+			{"", stick, ""},
+		},
+		grow_function = function(pos)
+			minetest.remove_node(pos)
+			minetest.place_schematic({x = pos.x-4, y = pos.y, z = pos.z-4}, modpath.."/schematics/tree_5.mts", "0", nil, false)
+		end,
+	},
+}
+
+local mod_bonemeal = minetest.get_modpath("bonemeal")
+
+for index,def in ipairs(trees) do
+	local sapling = "dorwinion:dorwinion_sapling_" .. index
+	local image = "dorwinion_sapling_" .. index .. ".png"
+
+	-- Register sapling
+	minetest.register_node(sapling, {
+		description = def.name .. " Dorwinion Sapling",
+		drawtype = "plantlike",
+		tiles = {image},
+		inventory_image = image,
+		wield_image = image,
+		paramtype = "light",
+		sunlight_propagates = true,
+		walkable = false,
+		on_timer = function(pos)
+			if not default.can_grow(pos) then
+				-- try a bit later again
+				minetest.get_node_timer(pos):start(math.random(240, 600))
+			else
+				minetest.remove_node(pos)
+				def.grow_function(pos)
+			end
+		end,
+		selection_box = {
+			type = "fixed",
+			fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 2 / 16, 4 / 16}
+		},
+		groups = {snappy = 2, dig_immediate = 3, flammable = 2,
+			attached_node = 1, sapling = 1},
+		sounds = default.node_sound_leaves_defaults(),
+
+		on_construct = function(pos)
+			minetest.get_node_timer(pos):start(math.random(300, 1500))
+		end,
+
+		on_place = function(itemstack, placer, pointed_thing)
+			itemstack = default.sapling_on_place(itemstack, placer, pointed_thing,
+				sapling,
+				-- minp, maxp to be checked, relative to sapling pos
+				{x = -1, y = 0, z = -1},
+				{x = 1, y = 1, z = 1},
+				-- maximum interval of interior volume check
+				2)
+
+			return itemstack
+		end,
+	})
+
+	-- Register sapling crafting recipe
+	minetest.register_craft({
+		output = sapling,
+		recipe = def.recipe,
+	})
+
+	-- Add bonemeal integration if supported
+	if mod_bonemeal then
+		bonemeal:add_sapling({
+			{sapling, def.grow_function, "soil"},
+		})
+	end
+end

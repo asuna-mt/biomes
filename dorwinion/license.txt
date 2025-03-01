@@ -16,3 +16,11 @@ Everyone is permitted to copy and distribute verbatim copies
 Anyone can fix the mod. My Discord "Atlante#1952" And my Mail Address "AtlanteEtDocteur@gmail.com"
 
 
+----
+
+The following textures are made by EmptyStar, licensed [CC0](https://creativecommons.org/publicdomain/zero/1.0/)
+
+- textures/dorwinion_sapling_1.png
+- textures/dorwinion_sapling_2.png
+- textures/dorwinion_sapling_3.png
+- textures/dorwinion_sapling_4.png
