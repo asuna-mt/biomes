@@ -1,8 +1,4 @@
 if minetest.get_modpath("bonemeal") then
-
-bonemeal:add_crop({
-	{"japaneseforest:sashimi_", 8, "japaneseforest:seed_sashimi"},
-})
 bonemeal:add_sapling({
 		{"japaneseforest:japanese_sapling", grow_new_japanese_tree_2, "soil"},
 })

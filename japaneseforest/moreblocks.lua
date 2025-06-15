@@ -44,13 +44,6 @@ if minetest.get_modpath("moreblocks") then
 	    sounds = default.node_sound_stone_defaults(),
 	})
 
-	stairsplus:register_all("sashimi_brick", "stone", "japaneseforest:sashimi_brick", {
-		description = "Sashimi Brick",
-	tiles = {"sashimi_brick.png"},
-      	groups = {cracky = 3, stone = 1},
-	    sounds = default.node_sound_stone_defaults(),
-	})
-
 	stairsplus:register_all("japanese_lamp", "wood", "japaneseforest:japanese_lamp", {
 		description = "Japanese Lamp",
 	tiles = {"japanese_lamp.png"},

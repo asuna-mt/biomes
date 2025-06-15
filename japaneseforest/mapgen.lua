@@ -125,16 +125,3 @@ minetest.register_decoration({
 		"default:grass_5",
 	}
 })
-
-
-
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {"japaneseforest:japanese_dirt_with_grass", "bambooforest:dirt_with_bamboo"},
-	sidelen = 16,
-	fill_ratio = 0.05,
-	biomes = {"japaneseforest", "bambooforest"},
-	decoration = {
-		"japaneseforest:sashimi_8",
-	}
-})

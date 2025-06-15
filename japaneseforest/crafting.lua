@@ -22,14 +22,6 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "japaneseforest:sashimi_brick 2",
-	recipe = {
-		{"default:brick", "japaneseforest:sashimi_cooked"},
-		{"japaneseforest:sashimi_cooked", "japaneseforest:sashimi_cooked"},
-	}
-})
-
-minetest.register_craft({
 	output = "japaneseforest:tatami_simple 2",
 	recipe = {
 		{"japaneseforest:mud", "bambooforest:fiber_bamboo"},
@@ -57,12 +49,6 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "cooking",
 	cooktime = 3,
-	output = "japaneseforest:sashimi_cooked",
-	recipe = "japaneseforest:sashimi"
-})
-minetest.register_craft({
-	type = "cooking",
-	cooktime = 3,
 	output = "japaneseforest:racine_cooked",
 	recipe = "japaneseforest:racine"
 })
@@ -79,14 +65,6 @@ minetest.register_craft({
 	recipe = {
 		{"default:brick", "default:coal_lump"},
 		{"dye:black", "default:brick"},
-	}
-})
-
-minetest.register_craft({
-	output = "japaneseforest:mud 2",
-	recipe = {
-		{"japaneseforest:sashimi", "default:sandstone"},
-		{"japaneseforest:sashimi", "japaneseforest:sashimi"},
 	}
 })
 

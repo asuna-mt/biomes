@@ -20,16 +20,6 @@ minetest.register_node("japaneseforest:japanese_wood", {
 	sounds = default.node_sound_wood_defaults(),
 })
 
-minetest.register_node("japaneseforest:sashimi_brick", {
-	description = "Sashimi Brick",
-	paramtype2 = "facedir",
-	place_param2 = 0,
-	tiles = {"sashimi_brick.png"},
-	is_ground_content = false,
-	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 1},
-	sounds = default.node_sound_wood_defaults(),
-})
-
 minetest.register_node("japaneseforest:tatami_simple", {
 	description = "Japanese Simple Tatami",
 	paramtype2 = "facedir",
